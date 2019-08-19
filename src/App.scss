@@ -110,3 +110,22 @@
   font-weight: 700;
   font-size: 16pt;
 }
+
+
+@media (min-width:961px)  {
+  .App {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+  }
+  body {
+    background-color: #efefef;
+  }
+}
+
+@media all and (display-mode: standalone) {
+  .addToHomeScreen {
+    display: none;
+  }
+}

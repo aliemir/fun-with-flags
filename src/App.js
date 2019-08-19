@@ -52,34 +52,19 @@ function App() {
   }
 
   async function shareApp(title, text, url) {
-    if (window.Windows) {
-      const {DataTransferManager} = window.Windows.ApplicationModel.DataTransfer;
-  
-      const dataTransferManager = DataTransferManager.getForCurrentView();
-      dataTransferManager.addEventListener("datarequested", (ev) => {
-        const {data} = ev.request;
-  
-        data.properties.title = title;
-        data.properties.url = url;
-        data.setText(text);
+    if (navigator.share) {
+      navigator.share({
+        title: 'Fun with Flags!',
+        text: `Check out this new addictive game! My highest score is ${game.stats.highScore}`,
+        url: "https://funflags.now.sh"
+      }).then(() => {
+        console.log('Thanks for sharing!');
+      })
+      .catch(err => {
+        console.log(`Couldn't share because of`, err.message);
       });
-  
-      DataTransferManager.showShareUI();
-  
-      return true;
-    } if (navigator.share) {
-      try {
-        await navigator.share({
-          title,
-          text,
-          url,
-        });
-  
-        return true;
-      } catch (err) {
-        console.error('There was an error trying to share this content');
-        return false;
-      }
+    } else {
+      console.log('web share not supported');
     }
   }
 
@@ -100,10 +85,10 @@ function App() {
     dispatch({type: 'RESET_GAME'});
   }
   const shareGame = () => {
-    shareApp('Fun With Flags', 'https://fun-flags.surge.sh', 'Hey! Check this game out! It`s soo addictive. ')
+    shareApp('Fun With Flags', 'https://funflags.now.sh', '')
   }
   const shareScore = () => {
-    shareApp('Fun With Flags', 'https://fun-flags.surge.sh', `I bet you can't beat my score ${game.stats.highScore} on Fun Flags!`)
+    shareApp('Fun With Flags', 'https://funflags.now.sh', '')
   }
   const checkAnswer = (e) => {
     const answer = e;
@@ -185,7 +170,7 @@ function App() {
         <button type="button" onClick={() => startGame()}>START GAME</button>
         <button type="button" onClick={() => showStats()}>STATISTICS</button>
         <button type="button" onClick={() => shareGame()}>CHALLENGE YOUR FRIENDS</button>
-        <button type="button" onClick={() => installApp()}>DOWNLOAD THE APP</button>
+        <button type="button" className="addToHomeScreen"onClick={() => installApp()}>DOWNLOAD THE APP</button>
       </div>
     )
   }
