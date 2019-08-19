@@ -1,0 +1,99 @@
+$logo-fun-color: #2b3252;
+$logo-with-color: #efefef;
+$logo-flags-color: #fad744;
+$logo-background-color: #ef5455;
+
+.logo {
+  box-sizing: border-box;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: auto;
+  &-background {
+    position: absolute;
+    height: 95px;
+    width: 95px;
+    background-color: $logo-background-color;
+    border-radius: 50%;
+    animation-direction: alternate;
+    transition: 0.75s all ease;
+    animation-name: bg-anim;
+    animation-iteration-count: infinite;
+    animation-duration: 0.75s;
+    @keyframes bg-anim {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.05);
+      }
+    }
+  }
+  .logo-text {
+    font-family: 'Bungee', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    &-fun {
+      color: $logo-fun-color;
+      font-size: 2.5em;
+      animation-direction: alternate;
+      transition: 0.5s all ease;
+      animation-name: text-fun-anim;
+      animation-iteration-count: infinite;
+      animation-duration: 1s;
+      @keyframes text-fun-anim {
+        0% {
+          transform: scale(1);
+          transform: rotate(-7deg);
+        }
+        100% {
+          transform: scale(1.05);
+          transform: scale(7deg);
+        }
+      }
+    }
+    &-with {
+      color: $logo-with-color;
+      margin: -18px 0;
+      z-index: 2;
+      font-size: 1em;
+      letter-spacing: 1px;
+      animation-direction: alternate;
+      transition: 1.25s all ease;
+      animation-name: text-with-anim;
+      animation-iteration-count: infinite;
+      animation-duration: 1.25s;
+      @keyframes text-with-anim {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.05);
+        }
+      }
+    }
+    &-flags {
+      letter-spacing: -3px;
+      color: $logo-flags-color;
+      font-size: 2.5em;
+      animation-direction: alternate;
+      transition: 1s all ease;
+      animation-name: text-flags-anim;
+      animation-iteration-count: infinite;
+      animation-duration: 1s;
+      @keyframes text-flags-anim {
+        0% {
+          transform: scale(1);
+          transform: rotate(5deg);
+        }
+        100% {
+          transform: scale(1.05);
+          transform: scale(-5deg);
+        }
+      }
+    }
+  }
+}

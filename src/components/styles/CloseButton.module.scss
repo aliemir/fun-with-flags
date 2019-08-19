@@ -1,0 +1,22 @@
+.closeButton {
+  color: #1d1b1b;
+  
+  width: 20%;
+  margin-right: auto;
+  box-sizing: border-box;
+  font-size: 2em;
+  font-weight: bolder;
+  .times {
+    transform: rotate(90deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    transition: 0.5s all ease;
+  }
+  .times:hover {
+    transform: rotate(360deg);
+  }
+}

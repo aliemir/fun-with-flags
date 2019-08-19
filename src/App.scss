@@ -1,0 +1,110 @@
+.App {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  width: 100vw; //100vw on mobile
+  height: 100vh;
+  //mobile test styling
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  //test,xse
+  box-sizing: border-box;
+  padding: 20px 20px 0 20px;
+
+  .container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s all ease;
+
+    button {
+      margin: 5px;
+      padding: 5px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 16pt;
+      background-color: transparent;
+      border: none;
+      transition: 0.3s all ease;
+      outline: none;
+      cursor: pointer;
+      // &:hover {
+      //   transform: scale(1.05);
+      //   color: rgb(250,215,68);
+      // }
+    }
+  }
+
+  .onStart, .onPause, .onOver {
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 24pt;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s all ease;
+    color: #000;
+
+    span {
+      margin: -10px 0 0 40px;
+      letter-spacing: 40px;
+    }
+  }
+
+  .onPlay {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16pt;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s all ease;
+    color: #000;
+
+    .flag {
+      font-size: 40vw;
+      text-align: center;
+    }
+    .choices {
+      margin: 20px 0 20px 0;
+    }
+    button {
+      outline: none;
+      padding: 5px 0;
+      border-radius: 3px;
+      border: 1px solid #bababa;
+      width: 75%;
+    }
+  }
+
+  .ads {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 320px;
+    height: 100px;
+    box-shadow: -15px 0px 15px -20px rgba(0,0,0,0.75), 15px 0px 15px -20px rgba(0,0,0,0.75);
+    background-color: rgba(200, 200, 180, 0.3);
+  }
+}
+
+.Loading {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16pt;
+}

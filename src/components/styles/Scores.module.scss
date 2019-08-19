@@ -1,0 +1,18 @@
+.score {
+  margin-left: auto;
+
+  width: 20%;
+  text-align: right;
+  box-sizing: border-box;
+  font-family: 'Bungee', sans-serif;
+  &-now {
+    font-size: 1.5em;
+  }
+  &-high {
+    font-size: 0.5em;
+    color: gray;
+  }
+  &-multiplier {
+    font-size: 0.75em;
+  }
+}
