@@ -6,6 +6,7 @@ import { Header, Timer } from './components';
 import { shuffle, flags, useGameState, createQuestions, useWindowSize } from './utils';
 
 function App() {
+  const [installPrompt, setPrompt] = useState(null);
   const [questions, setQuestions] = useState([...flags]);
   const { width, height } = useWindowSize();
   const [answerE, toggleAnswerE] = useState(0);
@@ -19,10 +20,74 @@ function App() {
   useEffect(() => {
     setQuestions(shuffle(createQuestions([...flags])));
     dispatch({type:'INIT_GAME'});
-  },[dispatch]);
+  }, [dispatch]);
+  
+  useEffect(() => {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      setPrompt(e);
+    });
+    
+  }, []);
+
+  async function installApp() {
+    if (installPrompt) {
+      installPrompt.prompt();
+      installPrompt.userChoice.then(function(choiceResult){
+  
+        if (choiceResult.outcome === 'accepted') {
+        console.log('Your PWA has been installed');
+      } else {
+        console.log('User chose to not install your PWA');
+      }
+  
+        setPrompt(null);
+  
+      });
+  
+  
+    }
+  }
+
+  async function shareApp(title, text, url) {
+    if (window.Windows) {
+      const {DataTransferManager} = window.Windows.ApplicationModel.DataTransfer;
+  
+      const dataTransferManager = DataTransferManager.getForCurrentView();
+      dataTransferManager.addEventListener("datarequested", (ev) => {
+        const {data} = ev.request;
+  
+        data.properties.title = title;
+        data.properties.url = url;
+        data.setText(text);
+      });
+  
+      DataTransferManager.showShareUI();
+  
+      return true;
+    } if (navigator.share) {
+      try {
+        await navigator.share({
+          title,
+          text,
+          url,
+        });
+  
+        return true;
+      } catch (err) {
+        console.error('There was an error trying to share this content');
+        return false;
+      }
+    }
+  }
 
   const startGame = () => {
     dispatch({type: 'START_GAME'});
+  }
+  const showStats = () => {
+    dispatch({ type: 'STATS' });
   }
   const pauseGame = () => {
     dispatch({type: 'PAUSE_GAME'});
@@ -35,10 +100,10 @@ function App() {
     dispatch({type: 'RESET_GAME'});
   }
   const shareGame = () => {
-    console.log('share game');
+    shareApp('Fun With Flags', 'https://fun-flags.surge.sh', 'Hey! Check this game out! It`s soo addictive. ')
   }
   const shareScore = () => {
-    console.log('share score');
+    shareApp('Fun With Flags', 'https://fun-flags.surge.sh', `I bet you can't beat my score ${game.stats.highScore} on Fun Flags!`)
   }
   const checkAnswer = (e) => {
     const answer = e;
@@ -77,6 +142,20 @@ function App() {
     )
   };
 
+  const onStatsRender = () => {
+    const total = game.stats.correctCount + game.stats.wrongCount;
+    return (
+      <div className="onStats" style={{textAlign: 'left'}}>
+        <div>HIGH SCORE : {game.stats.highScore}</div>
+        <div>TIMES PLAYED : {game.stats.timesPlayed}</div>
+        <div>CORRECT : {(game.stats.correctCount / total * 100).toFixed(0)}%</div>
+        <div>WRONG : {(game.stats.wrongCount / total * 100).toFixed(0)}%</div>
+        <span>...</span>
+        <button type="button" onClick={() => resetGame()}>GO BACK</button>
+      </div>
+    )
+  }
+
   const onPauseRender = () => {
     return (
       <div className="onPause">
@@ -104,8 +183,9 @@ function App() {
     return (
       <div className="onStart">
         <button type="button" onClick={() => startGame()}>START GAME</button>
-        <button type="button" disabled onClick={() => startGame()}>STATISTICS</button>
-        <button type="button" disabled onClick={() => shareGame()}>CHALLENGE YOUR FRIENDS</button>
+        <button type="button" onClick={() => showStats()}>STATISTICS</button>
+        <button type="button" onClick={() => shareGame()}>CHALLENGE YOUR FRIENDS</button>
+        <button type="button" onClick={() => installApp()}>DOWNLOAD THE APP</button>
       </div>
     )
   }
@@ -120,6 +200,8 @@ function App() {
         return onOverRender();
       case 'paused':
         return onPauseRender();
+      case 'stats':
+        return onStatsRender();
       default:
         return (<div>UNHANDLED_STATUS</div>)
     }
@@ -127,7 +209,7 @@ function App() {
 
   if(game) {
     return (
-      <animated.div className="App" style={{backgroundColor: bgAnim
+      <animated.div className="App" style={{height, backgroundColor: bgAnim
         .interpolate({
           range: [0, 0.5, 1],
           output: ['white', answerColor, 'white']
@@ -135,8 +217,10 @@ function App() {
         <Header scores={game.score} onCloseClick={() => {
           if (game.gameStatus === 'paused') {
             unpauseGame()
-          } else {
+          } else if(game.gameStatus === 'active') {
             pauseGame()
+          } else {
+            resetGame()
           }
         }} />
         <Timer time={game.time} effect={game.timeEffect}/>

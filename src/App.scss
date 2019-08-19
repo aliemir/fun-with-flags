@@ -38,7 +38,7 @@
     }
   }
 
-  .onStart, .onPause, .onOver {
+  .onStart, .onPause, .onOver, .onStats {
 
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -74,11 +74,12 @@
       text-align: center;
     }
     .choices {
-      margin: 20px 0 20px 0;
+      margin: 0 0 20px 0;
     }
     button {
       outline: none;
       padding: 5px 0;
+      margin-bottom: 6px;
       border-radius: 3px;
       border: 1px solid #bababa;
       width: 75%;
@@ -86,6 +87,7 @@
   }
 
   .ads {
+    opacity: 0;
     margin-left: auto;
     margin-right: auto;
     text-align: center;

@@ -73,7 +73,6 @@
     { "id": 77, "flag": "🇪🇷", "name": "Eritrea" },
     { "id": 78, "flag": "🇪🇸", "name": "Spain" },
     { "id": 79, "flag": "🇪🇹", "name": "Ethiopia" },
-    { "id": 80, "flag": "🇪🇺", "name": "European Union" },
     { "id": 81, "flag": "🇫🇮", "name": "Finland" },
     { "id": 82, "flag": "🇫🇯", "name": "Fiji" },
     { "id": 83, "flag": "🇫🇰", "name": "Falkland Islands" },
@@ -94,11 +93,6 @@
     { "id": 98, "flag": "🇬🇵", "name": "Guadeloupe" },
     { "id": 99, "flag": "🇬🇶", "name": "Equatorial Guinea" },
     { "id": 100, "flag": "🇬🇷", "name": "Greece" },
-    {
-      "id": 101,
-      "flag": "🇬🇸",
-      "name": "South Georgia & South Sandwich Islands"
-    },
     { "id": 102, "flag": "🇬🇹", "name": "Guatemala" },
     { "id": 103, "flag": "🇬🇺", "name": "Guam" },
     { "id": 104, "flag": "🇬🇼", "name": "Guinea-Bissau" },
@@ -120,7 +114,6 @@
     { "id": 120, "flag": "🇮🇷", "name": "Iran" },
     { "id": 121, "flag": "🇮🇸", "name": "Iceland" },
     { "id": 122, "flag": "🇮🇹", "name": "Italy" },
-    { "id": 123, "flag": "🇯🇪", "name": "Jersey" },
     { "id": 124, "flag": "🇯🇲", "name": "Jamaica" },
     { "id": 125, "flag": "🇯🇴", "name": "Jordan" },
     { "id": 126, "flag": "🇯🇵", "name": "Japan" },
@@ -197,7 +190,6 @@
     { "id": 197, "flag": "🇵🇼", "name": "Palau" },
     { "id": 198, "flag": "🇵🇾", "name": "Paraguay" },
     { "id": 199, "flag": "🇶🇦", "name": "Qatar" },
-    { "id": 200, "flag": "🇷🇪", "name": "Réunion" },
     { "id": 201, "flag": "🇷🇴", "name": "Romania" },
     { "id": 202, "flag": "🇷🇸", "name": "Serbia" },
     { "id": 203, "flag": "🇷🇺", "name": "Russia" },
@@ -242,8 +234,6 @@
     { "id": 242, "flag": "🇹🇿", "name": "Tanzania" },
     { "id": 243, "flag": "🇺🇦", "name": "Ukraine" },
     { "id": 244, "flag": "🇺🇬", "name": "Uganda" },
-    { "id": 245, "flag": "🇺🇲", "name": "U.S. Outlying Islands" },
-    { "id": 246, "flag": "🇺🇳", "name": "United Nations" },
     { "id": 247, "flag": "🇺🇸", "name": "United States" },
     { "id": 248, "flag": "🇺🇾", "name": "Uruguay" },
     { "id": 249, "flag": "🇺🇿", "name": "Uzbekistan" },
@@ -264,8 +254,6 @@
     { "id": 264, "flag": "🇿🇼", "name": "Zimbabwe" },
     { "id": 265, "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "name": "England" },
     { "id": 266, "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "name": "Scotland" },
-    { "id": 267, "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿", "name": "Wales" },
-    { "id": 268, "flag": "🏳️‍⚧️", "name": "Blue, Pink, and White Flag" },
-    { "id": 269, "flag": "🏴󠁵󠁳󠁴󠁸󠁿", "name": "Flag for Texas (US-TX)" }
+    { "id": 267, "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿", "name": "Wales" }
   ]
 }
