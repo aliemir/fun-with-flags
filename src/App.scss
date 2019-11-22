@@ -1,4 +1,9 @@
 .App {
+  * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+  }
   margin: 0;
   padding: 0;
   top: 0;
@@ -50,6 +55,11 @@
   .onPause,
   .onOver,
   .onStats {
+    & * {
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+    }
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 24pt;

@@ -1,5 +1,7 @@
 import { useReducer } from 'react'
-import { useLocalStorage, useInterval, calcMultiplier } from '.'
+import useLocalStorage from './useLocalStorage'
+import useInterval from './useInterval'
+import calcMultiplier from './calcMultiplier'
 
 const useGameState = () => {
   const [localData, setLocalData] = useLocalStorage(
