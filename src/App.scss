@@ -21,6 +21,9 @@
     transition: 1s all ease;
 
     button {
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-user-select: none;
       margin: 5px;
       padding: 5px;
       font-family: 'Montserrat', sans-serif;
@@ -35,11 +38,18 @@
       //   transform: scale(1.05);
       //   color: rgb(250,215,68);
       // }
+      &:hover,
+      &:active,
+      &:focus {
+        transform: scale(1.08);
+      }
     }
   }
 
-  .onStart, .onPause, .onOver, .onStats {
-
+  .onStart,
+  .onPause,
+  .onOver,
+  .onStats {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 24pt;
@@ -93,7 +103,8 @@
     text-align: center;
     width: 320px;
     height: 100px;
-    box-shadow: -15px 0px 15px -20px rgba(0,0,0,0.75), 15px 0px 15px -20px rgba(0,0,0,0.75);
+    box-shadow: -15px 0px 15px -20px rgba(0, 0, 0, 0.75),
+      15px 0px 15px -20px rgba(0, 0, 0, 0.75);
     background-color: rgba(200, 200, 180, 0.3);
   }
 }
@@ -105,14 +116,13 @@
   justify-content: center;
   text-align: center;
   align-items: center;
-  
+
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 16pt;
 }
 
-
-@media (min-width:961px)  {
+@media (min-width: 961px) {
   .App {
     width: 60%;
     margin-left: auto;
@@ -127,5 +137,41 @@
 @media all and (display-mode: standalone) {
   .addToHomeScreen {
     display: none;
+  }
+}
+
+.onStart > button:hover,
+.onStart > button:active {
+  animation: threeDAnim 0.6s infinite;
+  color: white;
+}
+
+@keyframes threeDAnim {
+  0% {
+    text-shadow: 2px 2px 0px red, -2px -2px 0px deepskyblue;
+  }
+  13% {
+    text-shadow: 0px 2px 0px red, 0px -2px 0px deepskyblue;
+  }
+  25% {
+    text-shadow: -2px 2px 0px red, 2px -2px 0px deepskyblue;
+  }
+  38% {
+    text-shadow: -2px 0px 0px red, 2px 0px 0px deepskyblue;
+  }
+  50% {
+    text-shadow: -2px -2px 0px red, 2px 2px 0px deepskyblue;
+  }
+  68% {
+    text-shadow: 0px -2px 0px red, 0px 2px 0px deepskyblue;
+  }
+  75% {
+    text-shadow: 2px -2px 0px red, -2px 2px 0px deepskyblue;
+  }
+  88% {
+    text-shadow: 2px 0px 0px red, -2px 0px 0px deepskyblue;
+  }
+  100% {
+    text-shadow: 2px 2px 0px red, -2px -2px 0px deepskyblue;
   }
 }
