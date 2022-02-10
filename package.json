@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "eslint-plugin-react-hooks": "^1.7.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "react": "^16.9.0",
     "react-confetti": "^4.0.1",
     "react-dom": "^16.9.0",
